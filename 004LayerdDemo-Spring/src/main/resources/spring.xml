@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="employeeDAO" class="com.ciq.dao.EmployeeDAO"></bean>
+
+
+	<bean id="employeeService" class="com.ciq.service.EmployeeService">
+		<constructor-arg ref="employeeDAO"></constructor-arg>
+	</bean>
+
+
+	<bean id="employeeController"
+		class="com.ciq.controller.EmployeeController">
+		<property name="employeeService" ref="employeeService"></property>
+	</bean>
+
+</beans>
