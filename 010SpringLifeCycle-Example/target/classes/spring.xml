@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd"
+	default-lazy-init="true">
+	<context:annotation-config></context:annotation-config>
+	<bean id="helloWorld" class="com.ciq.bean.HelloWorldBean"
+		init-method="init" destroy-method="destory">
+		<property name="name" value="Balaji"></property>
+	</bean>
+
+	<bean id="welcome" class="com.ciq.bean.WelcomeBean">
+		<property name="name" value="Balaji"></property>
+	</bean>
+
+	<bean id="hi" class="com.ciq.bean.HiBean">
+		<property name="name" value="Balaji"></property>
+	</bean>
+
+</beans>
