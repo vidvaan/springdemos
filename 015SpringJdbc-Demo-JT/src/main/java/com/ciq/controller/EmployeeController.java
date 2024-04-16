@@ -1,5 +1,7 @@
 package com.ciq.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -23,6 +25,14 @@ public class EmployeeController {
 
 	public void deleteById(Integer eid) {
 		employeeService.deleteById(eid);
+	}
+
+	public Employee findById(Integer eid) {
+		return employeeService.findById(eid);
+	}
+	
+	public List<Employee> findAll() {
+		return employeeService.findAll();
 	}
 
 }
