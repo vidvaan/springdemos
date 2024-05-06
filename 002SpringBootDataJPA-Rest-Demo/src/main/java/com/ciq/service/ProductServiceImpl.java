@@ -1,5 +1,6 @@
 package com.ciq.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +39,7 @@ public class ProductServiceImpl implements ProductService {
 	public void save(Product product) {
 
 		productRepository.save(product);
+		
 
 	}
 

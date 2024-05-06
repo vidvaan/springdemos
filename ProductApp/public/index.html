@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+
+
+		function loadProductData() {
+			var url = "http://localhost:9090/products";
+
+
+			$.ajax({
+				url: url, // The URL you want to request data from
+				type: 'GET', // Specifies the request type (GET, POST, etc.)
+				dataType: 'json', // Specifies the expected response data type (e.g., 'json', 'text', 'xml')
+				success: function (response) {
+					// This function is called if the request is successful
+					console.log('Response data:', response);
+					// You can handle the response data here (e.g., update the UI)
+					populateTable(response.result);
+				},
+				error: function (xhr, status, error) {
+					// This function is called if there is an error with the request
+					console.error('Error:', error);
+					// You can handle the error here (e.g., display an error message to the user)
+				},
+				complete: function (xhr, status) {
+					// Optional: This function is called when the request completes, regardless of success or error
+					console.log('Request complete with status:', status);
+				}
+			});
+
+		}
+
+		function populateTable(data) {
+			// Get a reference to the table body element
+			var tableBody = $('#productTab tbody');
+
+			// Clear existing rows
+			tableBody.empty();
+
+			// Loop through the data
+			data.forEach(function (product) {
+				// Create a new table row
+				var row = $('<tr>');
+
+				// Add cells for each property of the item
+				row.append('<td>' + product.pid + '</td>');
+				row.append('<td>' + product.pname + '</td>');
+				row.append('<td>' + product.pcost + '</td>');
+				// Add more cells as needed for other properties
+
+				// Append the row to the table body
+				tableBody.append(row);
+			});
+		}
+
+
+	</script>
+</head>
+
+<body onload="loadProductData();">
+	<h1>Product List</h1>
+
+	<table id="productTab">
+		<thead>
+			<tr>
+				<th>PID</th>
+				<th>PNAME</th>
+				<th>PCOST</th>
+			</tr>
+
+		</thead>
+
+		<tbody>
+
+		</tbody>
+
+	</table>
+
+</body>
+
+</html>
