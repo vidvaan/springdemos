@@ -1,5 +1,6 @@
 package com.ciq.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Employee {
 	private Long Emp_id;
 
 	@NotEmpty(message = "Must not be Empty and NULL")
+	@Column(unique = true)
 	private String phoneNumber;
 
 	@NotBlank(message = "Employee name can't be left empty")
@@ -40,6 +42,7 @@ public class Employee {
 
 	@Size(min = 10, max = 100, message = "Address should have a length between 10 and 100 characters.")
 	@NotNull(message = "Address cannot be NULL")
+	@Column(unique = true)
 	private String employeeAddress;
 
 	public Long getEmp_id() {
