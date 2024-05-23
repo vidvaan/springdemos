@@ -10,7 +10,7 @@ public interface ProductService {
 	
 	public Product findById(Integer pid);
 	
-	public void save(Product product);
+	public Product save(Product product);
 	
 	public void update(Product product);
 	

@@ -19,37 +19,35 @@ import com.ciq.service.ProductService;
 @RequestMapping("/products")
 @CrossOrigin(origins = "*")
 public class ProductController {
-	
+
 	@Autowired
 	private ProductService productService;
 
 	@GetMapping
 	public ResponseObj findAll() {
 		return new ResponseObj(200, productService.findAll());
-		
+
 	}
-	
-	
+
 	@GetMapping("{pid}")
 	public ResponseObj findById(@PathVariable("pid") Integer pid) {
 		return new ResponseObj(200, productService.findById(pid));
 	}
-	
+
 	@PostMapping
-	public ResponseObj save(@RequestBody  Product product) {
-		productService.save(product);
-		return new ResponseObj(200, "Insetrted Successflly");
-		
+	public ResponseObj save(@RequestBody Product product) {
+		Product produtObj = productService.save(product);
+		return new ResponseObj(200, produtObj);
+
 	}
-	
-	
+
 	@PutMapping
-	public ResponseObj update(@RequestBody  Product product) {
+	public ResponseObj update(@RequestBody Product product) {
 		productService.update(product);
 		return new ResponseObj(200, "Updated Successflly");
-		
+
 	}
-	
+
 	@DeleteMapping("{pid}")
 	public ResponseObj deleteById(@PathVariable("pid") Integer pid) {
 		productService.deleteById(pid);
